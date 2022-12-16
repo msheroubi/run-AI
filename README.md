@@ -23,6 +23,10 @@ These steps are necessary for the next step, **line detection**. This is done us
 
 The final step of the image processing was an **optimization step**. Notice in the previous image, there is a lot of data on that screen that would not help the AI "survive" or make moves. As a matter of fact, most of the frame is not needed to beat the levels in the game. To **find the region of interest** (ROI), I tested on myself the limits of these bounds, obscuring as much of the screen as possible while still beating each level. After rigorous testing, the shape that worked best was an upside down trapezoid. Isolating the ROI cut down processing time by over 60%.
 
+![ROI Isolation](/images/roi_runai.png)
+
+_This is a rough representation of the shape and size of the isolated region_
+
 ### Step 2: Training
 
 Not much is unique in this section. I used a pre-existing convolutional neural network called AlexNet. The model was trained by feeding it hours of playtime with the inputs being the line arrays and the outputs being keystrokes (left, right, jump). A portion of the training data was taken out to be used for testing.
